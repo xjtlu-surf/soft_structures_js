@@ -7,8 +7,13 @@ const messagesDiv = document.querySelector('#mqtt-messages');
 const buttonMatrixDiv = document.querySelector('#button-matrix');
 
 const MQTT_SERVER = import.meta.env.VITE_MQTT_SERVER
-const MQTT_USER = import.meta.env.VITE_MQTT_USER
-const MQTT_PASSWORD = import.meta.env.VITE_MQTT_PASSWORD
+const MQTT_USER_B64 = import.meta.env.VITE_MQTT_USER_B64;
+const MQTT_PASSWORD_B64 = import.meta.env.VITE_MQTT_PASSWORD_B64;
+
+// Decode the credentials
+const MQTT_USER = atob(MQTT_USER_B64);
+const MQTT_PASSWORD = atob(MQTT_PASSWORD_B64);
+
 const client = mqtt.connect(MQTT_SERVER, { username: MQTT_USER, password: MQTT_PASSWORD });
 
 // State to track the toggle status of each button (false = off, true = on)

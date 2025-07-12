@@ -34,9 +34,9 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Create .env file
         run: |
-          echo "VITE_MQTT_PASSWORD=${{ secrets.VITE_MQTT_PASSWORD }}" >> .env.local
+          echo "VITE_MQTT_PASSWORD_B64=${{ secrets.VITE_MQTT_PASSWORD_B64 }}" >> .env.local
           echo "VITE_MQTT_SERVER=${{ secrets.VITE_MQTT_SERVER }}" >> .env.local
-          echo "VITE_MQTT_USER=${{ secrets.VITE_MQTT_USER }}" >> .env.local
+          echo "VITE_MQTT_USER_B64=${{ secrets.VITE_MQTT_USER_B64 }}" >> .env.local
       - name: Install dependencies
         run: bun install
       - name: Build
