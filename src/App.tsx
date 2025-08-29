@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom'
 import { Card, Typography, Space, Button, Tooltip } from 'antd'
 import { UserOutlined, SolutionOutlined, EditOutlined, HighlightOutlined, BgColorsOutlined, BorderOutlined, DeleteOutlined, ArrowRightOutlined, ScissorOutlined, AimOutlined, HeartOutlined, StarOutlined, ArrowLeftOutlined } from '@ant-design/icons'
 import './App.css'
@@ -2666,12 +2666,18 @@ function PatientStart({ setRecords }: { setRecords?: React.Dispatch<React.SetSta
   )
 }
 
+const MQTT_SERVER = import.meta.env.VITE_MQTT_SERVER
+const MQTT_USER_B64 = import.meta.env.VITE_MQTT_USER_B64;
+const MQTT_PASSWORD_B64 = import.meta.env.VITE_MQTT_PASSWORD_B64;
+
+// Decode the credentials
+const MQTT_USER = atob(MQTT_USER_B64);
+const MQTT_PASSWORD = atob(MQTT_PASSWORD_B64);
+
 function App() {
   useEffect(() => {
-    const client = mqtt.connect('ws://8.133.250.249:8083/mqtt', {
-      username: 'surf_user1',
-      password: 'dojxop-5Domzu-farreb'
-    })
+    const client = mqtt.connect(MQTT_SERVER, { username: MQTT_USER, password: MQTT_PASSWORD });
+      
     
     client.on('connect', () => {
       console.log('MQTT Connected')
@@ -2745,7 +2751,7 @@ function App() {
   }))
   const [records, setRecords] = useState<{img: string, desc: string, analysis: string}[]>([])
   return (
-    <Router>
+    <BrowserRouter basename="/soft_structures_js/">
       <Background />
       {dandelions.map((d, i) => (
         <Dandelion key={i} {...d} />
@@ -2764,7 +2770,7 @@ function App() {
         <Route path="/records" element={<div style={{padding:80}}>Diagnosis Records (Content Pending)</div>} />
         <Route path="/services" element={<div style={{padding:80}}>Featured Services (Content Pending)</div>} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   )
 }
 
