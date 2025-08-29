@@ -82,7 +82,7 @@ function LogoHeader() {
       boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
     }}>
       <img
-        src="/logo.png"
+        src="soft_structures_js/logo.png"
         alt="ArtClue Logo"
         style={{
           height: 36,
@@ -1071,7 +1071,7 @@ function PatientStart({ setRecords }: { setRecords?: React.Dispatch<React.SetSta
       // 先画人体模型底图（根据当前显示的人像）
       const baseImg = new window.Image()
       baseImg.crossOrigin = 'anonymous'
-      baseImg.src = isFront ? '/human_model.png' : '/human_Back.png'
+      baseImg.src = isFront ? 'soft_structures_js/human_model.png' : 'soft_structures_js/human_Back.png'
       await new Promise(resolve => { baseImg.onload = resolve })
       ctx.drawImage(baseImg, 0, 0, offCanvas.width, offCanvas.height)
       // 再画用户绘画内容
@@ -2364,7 +2364,7 @@ function PatientStart({ setRecords }: { setRecords?: React.Dispatch<React.SetSta
         {/* 在人体模型img外层加ref和canvas尺寸同步 */}
         <div style={{ position: 'relative', display: 'inline-block' }} ref={containerRef}>
           <img
-            src={isFront ? "/human_model.png" : "/human_Back.png"}
+            src={isFront ? "soft_structures_js/human_model.png" : "soft_structures_js/human_Back.png"}
             alt={isFront ? "Human Model Front" : "Human Model Back"}
             style={{
               maxHeight: 640,
