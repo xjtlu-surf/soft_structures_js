@@ -1,19 +1,18 @@
 import mqtt from 'mqtt'
 
+
 // MQTT连接配置
-const config = {
-  host: '8.133.250.249',
-  port: 8083,
-  protocol: 'ws',
-  username: 'surf_user1',
-  password: 'dojxop-5Domzu-farreb'
-}
 
 console.log('Connecting to MQTT broker...')
-const client = mqtt.connect(`ws://${config.host}:${config.port}/mqtt`, {
-  username: config.username,
-  password: config.password
-})
+
+const MQTT_SERVER = import.meta.env.VITE_MQTT_SERVER
+const MQTT_USER_B64 = import.meta.env.VITE_MQTT_USER_B64;
+const MQTT_PASSWORD_B64 = import.meta.env.VITE_MQTT_PASSWORD_B64;
+// Decode the credentials
+const MQTT_USER = atob(MQTT_USER_B64);
+const MQTT_PASSWORD = atob(MQTT_PASSWORD_B64);
+
+const client = mqtt.connect(MQTT_SERVER, { username: MQTT_USER, password: MQTT_PASSWORD });
 
 client.on('connect', () => {
   console.log('✅ MQTT Connected successfully!')

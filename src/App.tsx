@@ -800,10 +800,16 @@ function PatientStart({ setRecords }: { setRecords?: React.Dispatch<React.SetSta
   // MQTT client
   const mqttClientRef = useRef<any>(null)
   useEffect(() => {
-    const client = mqtt.connect('ws://8.133.250.249:8083/mqtt', {
-      username: 'surf_user1',
-      password: 'dojxop-5Domzu-farreb'
-    })
+    const MQTT_SERVER = import.meta.env.VITE_MQTT_SERVER
+    const MQTT_USER_B64 = import.meta.env.VITE_MQTT_USER_B64;
+    const MQTT_PASSWORD_B64 = import.meta.env.VITE_MQTT_PASSWORD_B64;
+
+    // Decode the credentials
+    const MQTT_USER = atob(MQTT_USER_B64);
+    const MQTT_PASSWORD = atob(MQTT_PASSWORD_B64);
+
+    const client = mqtt.connect(MQTT_SERVER, { username: MQTT_USER, password: MQTT_PASSWORD });
+
     
     client.on('connect', () => {
       console.log('PatientStart MQTT Connected')
