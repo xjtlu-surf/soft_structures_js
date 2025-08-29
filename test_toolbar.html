@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolbar Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .test-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .test-result {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>ArtClue 工具栏功能测试</h1>
+        
+        <div class="test-section">
+            <div class="test-title">✅ 已实现的功能</div>
+            <div class="test-description">以下功能已经成功实现：</div>
+            <div class="test-result">
+                <ul>
+                    <li>✅ 删除了 "Mode Section" 标题</li>
+                    <li>✅ Mode 1 和 Mode 2 按钮独立成块，与工具栏分离</li>
+                    <li>✅ 工具栏图标悬停显示英文名称（Pencil, Brush, Color Bucket, Shapes, Eraser, Mouse Cursor）</li>
+                    <li>✅ 笔刷图标加粗显示，体现粗细差异</li>
+                    <li>✅ 橡皮擦使用剪刀图标，更符合橡皮擦的视觉效果</li>
+                    <li>✅ 鼠标光标使用瞄准图标，更符合鼠标指针的视觉效果</li>
+                    <li>✅ 颜色选择器和形状选择器支持鼠标悬停交互</li>
+                    <li>✅ 工具栏按钮使用圆形设计，带有悬停动画效果</li>
+                    <li>✅ 支持铅笔（细）、笔刷（粗）、橡皮擦、鼠标箭头等工具模式</li>
+                    <li>✅ 提供丰富的颜色选择（12种颜色）</li>
+                    <li>✅ 提供多种形状选择（8种形状）</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🎨 工具栏功能说明</div>
+            <div class="test-description">工具栏包含以下工具：</div>
+            <div class="test-result">
+                <ul>
+                    <li><strong>Pencil（铅笔）</strong>：细线条绘画工具</li>
+                    <li><strong>Brush（笔刷）</strong>：粗线条绘画工具</li>
+                    <li><strong>Color Bucket（颜料桶）</strong>：悬停显示颜色选择器</li>
+                    <li><strong>Shapes（图形）</strong>：悬停显示形状选择器</li>
+                    <li><strong>Eraser（橡皮擦）</strong>：擦除绘画内容</li>
+                    <li><strong>Mouse Cursor（鼠标光标）</strong>：退出绘画模式</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🔧 技术实现</div>
+            <div class="test-description">主要技术改进：</div>
+            <div class="test-result">
+                <ul>
+                    <li>使用 React Hooks 管理工具状态</li>
+                    <li>实现 Canvas 绘画功能</li>
+                    <li>添加 CSS 动画和悬停效果</li>
+                    <li>使用 Ant Design 组件和图标</li>
+                    <li>支持工具切换和模式管理</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📝 使用说明</div>
+            <div class="test-description">如何测试工具栏功能：</div>
+            <div class="test-result">
+                <ol>
+                    <li>启动开发服务器：<code>npm run dev</code></li>
+                    <li>进入 Patient Entry 页面</li>
+                    <li>查看左侧新的工具栏设计</li>
+                    <li>测试各种工具的切换和功能</li>
+                    <li>验证颜色和形状选择器的交互</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

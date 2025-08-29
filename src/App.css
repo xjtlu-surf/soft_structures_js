@@ -1,0 +1,240 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.slide-up {
+  animation: slideUpChat 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+@keyframes slideUpChat {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownMqtt {
+  from {
+    transform: translateY(-60px) translateX(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
+  }
+}
+
+.mqtt-slide-down {
+  animation: slideDownMqtt 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 工具栏样式 */
+.tool-button {
+  transition: all 0.2s ease-in-out;
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+.tool-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+.tool-button.ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff, #40a9ff) !important;
+  border: none !important;
+}
+
+/* 工具栏悬停面板样式 */
+.tool-hover-panel {
+  animation: fadeInSlide 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  will-change: opacity, transform;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 工具按钮悬停时的面板显示优化 */
+.tool-button:hover + .tool-hover-panel,
+.tool-hover-panel:hover {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  pointer-events: auto !important;
+}
+
+/* 笔刷图标特殊样式 */
+.brush-icon {
+  font-weight: bold !important;
+  font-size: 18px !important;
+  color: #333 !important;
+}
+
+/* 形状图标样式 */
+.shape-icon {
+  font-size: 16px !important;
+  color: #333 !important;
+}
+
+.shape-icon.selected {
+  color: #1890ff !important;
+  font-weight: bold !important;
+}
+
+.color-picker {
+  animation: fadeIn 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.shape-picker {
+  animation: fadeIn 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.color-option {
+  transition: all 0.2s ease-in-out;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.shape-option {
+  transition: all 0.2s ease-in-out;
+}
+
+.shape-option:hover {
+  transform: scale(1.05);
+}
+
+.shape-option.ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff, #40a9ff) !important;
+  border: none !important;
+}
+
+/* 选择器悬停效果 */
+.color-picker:hover,
+.shape-picker:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2) !important;
+  transform: translateY(-2px);
+}
+
+/* 笔刷粗细调节器样式 */
+.brush-thickness-picker {
+  animation: fadeIn 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.brush-thickness-picker:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2) !important;
+  transform: translateY(-2px);
+}
+
+/* 自定义range输入样式 */
+.brush-thickness-picker input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.brush-thickness-picker input[type="range"]::-webkit-slider-track {
+  background: #e0e0e0;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.brush-thickness-picker input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #1890ff;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.brush-thickness-picker input[type="range"]::-moz-range-track {
+  background: #e0e0e0;
+  height: 6px;
+  border-radius: 3px;
+  border: none;
+}
+
+.brush-thickness-picker input[type="range"]::-moz-range-thumb {
+  background: #1890ff;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

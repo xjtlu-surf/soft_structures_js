@@ -1,52 +1,69 @@
+# React + TypeScript + Vite
 
-# Wearable Pneumatics - Web Interface
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This web interface provides a simple way to control a series of actuators connected to an ESP32. It features a 3x3 grid of buttons, each corresponding to an actuator.
+Currently, two official plugins are available:
 
-## Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **MQTT Communication:** The web interface communicates with the ESP32 via an MQTT broker.
-- **Actuator Control:**  Each button toggles a corresponding actuator on or off.
-- **Connection Status:** The interface displays the current connection status to the MQTT broker.
-- **Message Log:** A log of sent and received messages is displayed for debugging purposes.
+## Expanding the ESLint configuration
 
-## Installation and Setup
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-1. **Prerequisites:**
-   - [Bun](https://bun.sh/) must be installed.
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-2. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd <repository-url>/Javascript Code/web-mqtt
-   ```
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
-3. **Install dependencies:**
-   - This project uses [Vite](https://vitejs.dev/) for the frontend development server. If you don't have Vite installed globally, you can install it with Bun:
-    ```bash
-    bun add -g vite
-    ```
-   - Install the project dependencies using Bun:
-    ```bash
-    bun install
-    ```
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-4. **Configure MQTT Broker:**
-   - The MQTT broker credentials are hardcoded in `src/main.js`. You may need to update the following lines to match your broker's configuration:
-     ```javascript
-     const client = mqtt.connect('mqtt://your-broker-address:port', { username: 'your-username', password: 'your-password' });
-     ```
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-5. **Run the development server:**
-   ```bash
-   bun run dev
-   ```
-   This will start a local development server. Open your web browser and navigate to the provided URL (usually `http://localhost:5173`).
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-## Usage
-
-- Click on any of the buttons in the 3x3 grid to send a command to the corresponding actuator.
-- The button will change color to indicate the on/off state.
-- The "MQTT Connection Status" section will show if the web interface is connected to the MQTT broker.
-- The "Messages" section will display a log of sent and received MQTT messages.
-"
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
